@@ -11,6 +11,9 @@ import {MovieDetailsComponent} from "./movie-details/movie-details.component";
 import {ApiService} from "../api.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
+// Reactive Form Module
+import {ReactiveFormsModule} from "@angular/forms";
+
 
 
 const routes: Routes = [
@@ -27,6 +30,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FontAwesomeModule,
+    ReactiveFormsModule,
   ],
   exports: [
     RouterModule,

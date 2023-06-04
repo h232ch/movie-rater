@@ -14,8 +14,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
+
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'movies' },
+  { path: '', pathMatch: 'full', redirectTo: 'auth' },
+  // { path: '', pathMatch: 'full', redirectTo: 'movies' },
 ];
 
 
@@ -33,7 +35,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
 
     // Fontawesome
-    FontAwesomeModule
+    FontAwesomeModule,
+
   ],
   exports: [
     RouterModule
