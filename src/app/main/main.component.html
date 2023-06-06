@@ -1,5 +1,7 @@
+<div>
+  <button (click)="logout()">Logout</button>
+</div>
 <div class="layout">
-
   <app-movie-list [movies]="movies" (selectMovie)="selectMovie($event)"
     (editedMovie)="editMovie($event)" (createNewMovie)="createNewMovie()"
     (deletedMovie)="deletedMovie($event)"></app-movie-list>
@@ -9,7 +11,6 @@
     (movieCreated)="movieCreated($event)"
     (movieUpdated)="movieUpdated($event)"></app-movie-form>
   </div>
-
 </div>
 
 

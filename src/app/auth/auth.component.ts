@@ -33,17 +33,34 @@ export class AuthComponent implements OnInit {
     password: new FormControl(''),
   })
 
+  registerMode = false
+
   saveForm() {
+    if (!this.registerMode) {
+      this.loginUser();
+    } else {
+      this.apiService.registerUser(this.authForm.value).subscribe(
+        (result: any) => { // TODO change type
+          console.log(result),
+          this.router.navigate(['/movies'])
+        },
+        error => {
+          console.log(error)
+        }
+      );
+    }
+  }
+
+  loginUser() {
     this.apiService.loginUser(this.authForm.value).subscribe(
       (result: any) => { // TODO change type
         console.log(result),
           this.cookieService.set('mr-token', result.token);
-          this.router.navigate(['/movies'])
+        this.router.navigate(['/movies'])
       },
       error => {
         console.log(error)
       }
     );
-    console.log(this.authForm.value)
   }
 }
