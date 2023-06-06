@@ -11,6 +11,10 @@
   </button>
 </form>
 <br>
+{{ loginStatus }}
+<br>
 <span *ngIf="!registerMode" (click)="registerMode = true">Don't have an account? Register here.</span>
+<br>
 <span *ngIf="registerMode" (click)="registerMode = false">Already have an account? Go to login.</span>
+
 

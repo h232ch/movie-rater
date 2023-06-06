@@ -34,6 +34,7 @@ export class AuthComponent implements OnInit {
   })
 
   registerMode = false
+  loginStatus = ''
 
   saveForm() {
     if (!this.registerMode) {
@@ -41,8 +42,7 @@ export class AuthComponent implements OnInit {
     } else {
       this.apiService.registerUser(this.authForm.value).subscribe(
         (result: any) => { // TODO change type
-          console.log(result),
-          this.router.navigate(['/movies'])
+            this.router.navigate(['/movies']);
         },
         error => {
           console.log(error)
@@ -51,15 +51,20 @@ export class AuthComponent implements OnInit {
     }
   }
 
+
   loginUser() {
     this.apiService.loginUser(this.authForm.value).subscribe(
       (result: any) => { // TODO change type
-        console.log(result),
+          console.log(result);
+          this.loginStatus = '';
           this.cookieService.set('mr-token', result.token);
-        this.router.navigate(['/movies'])
+          this.router.navigate(['/movies'])
       },
       error => {
         console.log(error)
+        if (error.status == 400) {
+          this.loginStatus = "Username or Password is not correct, check it up again."
+        }
       }
     );
   }
